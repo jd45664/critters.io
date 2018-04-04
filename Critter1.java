@@ -1,0 +1,33 @@
+package assignment4;
+
+import assignment4.Critter.TestCritter;
+
+public class Critter1 extends TestCritter {
+	/**
+	 * always has enough energy to reproduce 3 times
+	 */
+	@Override
+	public void doTimeStep() {			
+		walk(getRandomInt(8));
+		if(getEnergy() < 65) {
+			setEnergy(65);
+		}
+	}
+	/**
+	 * whenever this critter fights, it reproduces 3 times after running away
+	 */
+	@Override
+	public boolean fight(String opponent) {
+		Rabbit crit = new Rabbit();
+		int direction = getRandomInt(8);
+		walk(direction);
+		reproduce(crit,direction);
+
+		return false;
+	}
+
+	@Override
+	public String toString () {
+		return "1";
+	}
+}
